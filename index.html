@@ -4,166 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SVCkill - Antywirus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
-    /* Reset stylów */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Ustawienia tła zgodne ze stroną rejestracji */
     body {
-      font-family: 'Roboto', sans-serif;
-      background: #f2f2f2;
-      color: #333;
-      line-height: 1.6;
-    }
-    /* Nagłówek */
-    header {
-      background: #2575fc;
-      color: #fff;
-      padding: 20px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header .logo {
-      font-size: 1.8em;
-      font-weight: 700;
-    }
-    nav a {
-      color: #fff;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #e0e0e0;
-    }
-    nav a.btn {
-      border: 2px solid #fff;
-      padding: 6px 12px;
-      border-radius: 5px;
-    }
-    /* Sekcja hero */
-    .hero {
-      position: relative;
-      background: url('assets/images/hero-bg.jpg') no-repeat center center/cover;
-      height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.5);
-    }
-    .hero-content {
-      position: relative;
-      color: #fff;
-      padding: 0 20px;
-    }
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-    .hero-content a.btn {
-      background: #2575fc;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: background 0.3s ease;
-    }
-    .hero-content a.btn:hover {
-      background: #1a5bb8;
-    }
-    /* Sekcje */
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    section:nth-of-type(even) {
-      background: #e9e9e9;
-    }
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2575fc;
-    }
-    section p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    /* Stopka */
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-    /* Responsywność */
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2.2rem; }
-      header { padding: 10px 20px; }
-      nav a { margin-left: 10px; }
+      background: linear-gradient(135deg, #667eea, #764ba2);
     }
   </style>
 </head>
-<body>
-  <!-- Nagłówek -->
-  <header>
-    <div class="logo">SVCkill</div>
-    <nav>
-      <a href="#about">O nas</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://svckill.github.io/SVCkill_login.github.io/register.html" class="btn">Zarejestruj się</a>
-    </nav>
+<body class="text-white">
+  <!-- Nagłówek z efektem glassmorphism -->
+  <header class="fixed top-0 left-0 w-full z-50">
+    <div class="backdrop-blur-md bg-white/10 py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="text-2xl font-bold">SVCkill</div>
+        <nav class="space-x-6">
+          <a href="#about" class="hover:text-gray-300 transition">O nas</a>
+          <a href="#faq" class="hover:text-gray-300 transition">FAQ</a>
+          <a href="#contact" class="hover:text-gray-300 transition">Kontakt</a>
+          <a href="register.html" class="border border-white py-1 px-3 rounded hover:bg-white hover:text-blue-600 transition">Zarejestruj się</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <!-- Sekcja hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>SVC Anti Malware</h1>
-      <p>Ochrona na najwyższym poziomie – Twój komputer zasługuje na najlepszą ochronę.</p>
-      <a href="https://mega.nz/file/VTFSAQoJ#pUTK4MEQbM9IaQqpD1BOvzcUypZXiarUnp7IUIs-nIc" class="btn">Pobierz teraz</a>
+  <!-- Sekcja Hero -->
+  <section class="relative flex items-center justify-center h-screen pt-20">
+    <!-- Overlay dla lepszej czytelności -->
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="container relative z-10 text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold animate__animated animate__fadeInDown">SVC Anti Malware</h1>
+      <p class="mt-4 text-xl md:text-2xl text-gray-200 animate__animated animate__fadeInDown animate__delay-1s">
+        Skuteczna ochrona Twojego komputera przed zagrożeniami
+      </p>
+      <a href="https://mega.nz/file/VTFSAQoJ#pUTK4MEQbM9IaQqpD1BOvzcUypZXiarUnp7IUIs-nIc" 
+         class="mt-8 inline-block bg-blue-600 hover:bg-blue-700 font-semibold py-3 px-6 rounded-full transition transform hover:scale-105 animate__animated animate__zoomIn animate__delay-2s">
+        Pobierz teraz
+      </a>
     </div>
   </section>
 
-  <!-- Sekcja O nas -->
-  <section id="about">
-    <h2>O nas</h2>
-    <p>SVCkill to zaawansowane oprogramowanie antymalware, które chroni Twój komputer przed wirusami, malware oraz innymi zagrożeniami. Nasze rozwiązanie gwarantuje ochronę w czasie rzeczywistym i szybkie skanowanie.</p>
+  <!-- Sekcja "O nas" z efektem glassmorphism -->
+  <section id="about" class="py-16 bg-white/10 backdrop-blur-sm">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-4 animate__animated animate__fadeInUp">O nas</h2>
+      <p class="text-lg text-gray-200 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        SVCkill to nowoczesne oprogramowanie antymalware, które zapewnia ochronę w czasie rzeczywistym, szybkie skanowanie oraz przyjazny interfejs użytkownika. Chroni Twój komputer przed wirusami, ransomware, spyware oraz innymi zagrożeniami.
+      </p>
+    </div>
   </section>
 
   <!-- Sekcja FAQ -->
-  <section id="faq">
-    <h2>FAQ</h2>
-    <p>Masz pytania? Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszego oprogramowania.</p>
+  <section id="faq" class="py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-4 animate__animated animate__fadeInUp">FAQ</h2>
+      <p class="text-lg text-gray-200 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        Znajdziesz tu odpowiedzi na najczęściej zadawane pytania dotyczące SVCkill. Dowiedz się, jak program chroni Twój komputer oraz jak korzystać z jego pełnych możliwości.
+      </p>
+    </div>
   </section>
 
   <!-- Sekcja Kontakt -->
-  <section id="contact">
-    <h2>Kontakt</h2>
-    <p>Skontaktuj się z nami, aby uzyskać więcej informacji lub zgłosić problem. Jesteśmy tutaj, aby pomóc!</p>
+  <section id="contact" class="py-16 bg-white/10 backdrop-blur-sm">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-4 animate__animated animate__fadeInUp">Kontakt</h2>
+      <p class="text-lg text-gray-200 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        Masz pytania? Skontaktuj się z nami, a z przyjemnością odpowiemy na Twoje zapytania. Jesteśmy tutaj, aby pomóc!
+      </p>
+    </div>
   </section>
 
   <!-- Stopka -->
-  <footer>
-    &copy; 2025 SVCkill. Wszelkie prawa zastrzeżone.
+  <footer class="bg-gray-800 text-gray-300 py-6">
+    <div class="container mx-auto px-4 text-center">
+      &copy; 2025 SVCkill. Wszelkie prawa zastrzeżone.
+    </div>
   </footer>
 </body>
 </html>
