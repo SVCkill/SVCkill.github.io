@@ -1,0 +1,82 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kup Premium - Xeterion</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(135deg, #1e3a8a, #6b21a8); font-family: 'Orbitron', sans-serif; }
+    .neon-btn { box-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; }
+    .neon-btn:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 1), 0 0 50px rgba(59, 130, 246, 0.6); transform: translateY(-3px); }
+    .cyber-glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 1.5rem; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-white">
+  <div class="container mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center cyber-glass">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Kup Subskrypcję Premium</h1>
+    <p class="text-base sm:text-lg mb-6 sm:mb-8">Cena: 9.99 USD/miesiąc – odblokuj download i full protection!</p>
+    <button id="checkout-button" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn">
+      Zapłać teraz
+    </button>
+    <p class="mt-4 text-sm sm:text-base text-gray-300">Po płatności zaloguj się na <a href="/login.html" class="underline hover:text-blue-400">stronie logowania</a> by pobrać.</p>
+  </div>
+  <script>
+    const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Zamień na swój klucz
+    document.getElementById('checkout-button').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const { id } = await response.json();
+        const { error } = await stripe.redirectToCheckout({ sessionId: id });
+        if (error) console.error(error.message);
+      } catch (err) {
+        alert('Błąd płatności: ' + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
