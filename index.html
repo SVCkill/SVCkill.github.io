@@ -1,85 +1,109 @@
-<html lang="pl"><head>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SVCkill - Antywirus</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Xeterion - Antywirus</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Ustawienia tła zgodne ze stroną rejestracji */
-    body {
-      background: linear-gradient(135deg, #667eea, #764ba2);
+    body { background: linear-gradient(135deg, #1e3a8a, #6b21a8); font-family: 'Orbitron', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .neon-btn { box-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; }
+    .neon-btn:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 1), 0 0 50px rgba(59, 130, 246, 0.6); transform: translateY(-3px); }
+    .cyber-glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 1.5rem; }
+    .nav-menu { transition: all 0.3s ease; }
+    .nav-menu.hidden { transform: translateX(100%); }
+    .hero-pulse { animation: pulse 2s infinite ease-in-out; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+    @media (max-width: 640px) {
+      .nav-menu { position: fixed; top: 0; right: 0; height: 100%; width: 80%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); flex-direction: column; padding: 3rem 2rem; }
+      .nav-menu a { margin: 1.5rem 0; font-size: 1.5rem; text-transform: uppercase; }
+      .nav-menu a::after { content: ''; display: block; width: 0; height: 3px; background: linear-gradient(90deg, #3b82f6, #a855f7); transition: width 0.3s ease; }
+      .nav-menu a:hover::after { width: 100%; }
     }
   </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.top-0{top:0px}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-4{margin-bottom:1rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.inline-block{display:inline-block}.flex{display:flex}.h-screen{height:100vh}.w-full{width:100%}.max-w-2xl{max-width:42rem}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pt-20{padding-top:5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-50{opacity:0.5}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.hover\:text-gray-300:hover{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}</style></head>
+</head>
 <body class="text-white">
-  <!-- Nagłówek z efektem glassmorphism -->
   <header class="fixed top-0 left-0 w-full z-50">
-    <div class="backdrop-blur-md bg-white/10 py-4">
-      <div class="container mx-auto px-4 flex justify-between items-center">
-        <div class="text-2xl font-bold">SVCkill</div>
-        <nav class="space-x-6">
-          <a href="#about" class="hover:text-gray-300 transition">O nas</a>
-          <a href="#faq" class="hover:text-gray-300 transition">FAQ</a>
-          <a href="#contact" class="hover:text-gray-300 transition">Kontakt</a>
-          <a href="register.html" class="border border-white py-1 px-3 rounded hover:bg-white hover:text-blue-600 transition">Zarejestruj się</a>
+    <div class="cyber-glass py-4 sm:py-5">
+      <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        <div class="text-2xl sm:text-4xl font-bold tracking-wider">Xeterion</div>
+        <button id="menu-toggle" class="sm:hidden text-white focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+        <nav id="nav-menu" class="nav-menu hidden sm:flex sm:space-x-10">
+          <a href="#about" class="text-lg hover:text-blue-400 transition">O nas</a>
+          <a href="#faq" class="text-lg hover:text-blue-400 transition">FAQ</a>
+          <a href="#kup" class="text-lg hover:text-blue-400 transition">Kup teraz</a>
+          <a href="register.html" class="border border-blue-400 text-blue-400 py-2 px-6 rounded-xl hover:bg-blue-400 hover:text-black transition neon-btn">Zarejestruj się</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- Sekcja Hero -->
-  <section class="relative flex items-center justify-center h-screen pt-20">
-    <!-- Overlay dla lepszej czytelności -->
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="container relative z-10 text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold animate__animated animate__fadeInDown">SVC Anti Malware</h1>
-      <p class="mt-4 text-xl md:text-2xl text-gray-200 animate__animated animate__fadeInDown animate__delay-1s">
-        Skuteczna ochrona Twojego komputera przed zagrożeniami
+  <section class="relative flex items-center justify-center h-screen pt-20 sm:pt-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/70"></div>
+    <div class="container relative z-10 text-center px-4 sm:px-6 hero-pulse">
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-wider animate__animated animate__fadeInDown">Xeterion Anti Malware</h1>
+      <p class="mt-4 sm:mt-8 text-lg sm:text-2xl md:text-3xl text-gray-300 animate__animated animate__fadeInDown animate__delay-1s max-w-4xl mx-auto">
+        Zabezpiecz swój cyfrowy świat z Xeterion – ochrona przed wirusami, ransomware i innymi zagrożeniami na najwyższym poziomie!
       </p>
-      
-      <a href="https://www.dropbox.com/scl/fi/vqm4vacb7098qjntit9c2/SVCcomet.zip?rlkey=r0mxj4bndnhtbo5v25eedetur&st=eo4uue0o&dl=1" class="mt-8 inline-block bg-blue-600 hover:bg-blue-700 font-semibold py-3 px-6 rounded-full transition transform hover:scale-105 animate__animated animate__zoomIn animate__delay-2s">
-        Pobierz teraz
+      <a href="kup.html" class="mt-6 sm:mt-10 inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn animate__animated animate__zoomIn animate__delay-2s">
+        Kup teraz (Premium)
       </a>
     </div>
   </section>
-  <!-- Sekcja "O nas" z efektem glassmorphism -->
-  <section id="about" class="py-16 bg-white/10 backdrop-blur-sm">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-4 animate__animated animate__fadeInUp">O nas</h2>
-      <p class="text-lg text-gray-200 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
-        SVCkill to nowoczesne oprogramowanie antymalware, które zapewnia ochronę w czasie rzeczywistym, szybkie skanowanie oraz przyjazny interfejs użytkownika. Chroni Twój komputer przed wirusami, ransomware, spyware oraz innymi zagrożeniami.
+
+  <section id="about" class="py-16 sm:py-24 cyber-glass mx-4 sm:mx-6 md:mx-12 lg:mx-20">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">O nas</h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        Xeterion to nie tylko antywirus – to tarcza przyszłości. Oferujemy ochronę w czasie rzeczywistym, ultraszybkie skanowanie i interfejs, który sprawia, że bezpieczeństwo jest proste. Z nami wirusy, ransomware i spyware nie mają szans.
       </p>
     </div>
   </section>
 
-  <!-- Sekcja FAQ -->
-  <section id="faq" class="py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-4 animate__animated animate__fadeInUp">FAQ</h2>
-      <p class="text-lg text-gray-200 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
-        Znajdziesz tu odpowiedzi na najczęściej zadawane pytania dotyczące SVCkill. Dowiedz się, jak program chroni Twój komputer oraz jak korzystać z jego pełnych możliwości.
+  <section id="faq" class="py-16 sm:py-24">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">FAQ</h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        Masz pytania? Sprawdź odpowiedzi na najczęściej zadawane pytania i odkryj, jak Xeterion rewolucjonizuje ochronę Twojego komputera.
       </p>
     </div>
   </section>
 
-  <!-- Sekcja Kontakt -->
-  <section id="contact" class="py-16 bg-white/10 backdrop-blur-sm">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-4 animate__animated animate__fadeInUp">Kontakt</h2>
-      <p class="text-lg text-gray-200 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
-        Masz pytania? Skontaktuj się z nami, a z przyjemnością odpowiemy na Twoje zapytania. Jesteśmy tutaj, aby pomóc!
+  <section id="kup" class="py-16 sm:py-24 cyber-glass mx-4 sm:mx-6 md:mx-12 lg:mx-20">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">Kup Premium</h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+        Subskrypcja Premium odblokowuje pełny download i zaawansowane funkcje. Download dostępny tylko dla zalogowanych użytkowników premium po opłaceniu.
       </p>
+      <a href="kup.html" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn">
+        Przejdź do zakupu
+      </a>
+      <p class="mt-4 text-sm sm:text-base text-gray-300">Po zakupie zaloguj się na <a href="/login.html" class="underline hover:text-blue-400">stronie logowania</a> by pobrać.</p>
     </div>
   </section>
 
-  <!-- Stopka -->
-  <footer class="bg-gray-800 text-gray-300 py-6">
-    <div class="container mx-auto px-4 text-center">
-      © 2025 SVCkill. Wszelkie prawa zastrzeżone.
+  <footer class="bg-black text-gray-300 py-8 sm:py-10">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm sm:text-lg">© 2025 Xeterion. Wszelkie prawa zastrzeżone.</p>
+      <div class="mt-4 space-x-4 sm:space-x-6">
+        <a href="#about" class="text-sm sm:text-lg hover:text-blue-400 transition">O nas</a>
+        <a href="#faq" class="text-sm sm:text-lg hover:text-blue-400 transition">FAQ</a>
+        <a href="#kup" class="text-sm sm:text-lg hover:text-blue-400 transition">Kup teraz</a>
+      </div>
     </div>
   </footer>
 
-
-</body></html>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
