@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Antywirus – Auth</title>
+
+  <!-- tsparticles (efekt tła) -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { 
+      getAuth, 
+      createUserWithEmailAndPassword, 
+      signInWithEmailAndPassword 
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    // 🔑 Twoja konfiguracja Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBFjiGzBDGjStru3gAo2eEh6GXLqDzy4Do",
+      authDomain: "svccomet.firebaseapp.com",
+      projectId: "svccomet",
+      storageBucket: "svccomet.firebasestorage.app",
+      messagingSenderId: "388894140528",
+      appId: "1:388894140528:web:c0240da9afbf62197d2cb5"
+    };
+
+    // Inicjalizacja Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Logika po załadowaniu DOM
+    window.addEventListener("DOMContentLoaded", () => {
+      const registerForm = document.querySelector("#registerForm");
+      const loginForm = document.querySelector("#loginForm");
+      const switchToLogin = document.querySelector("#switchToLogin");
+      const switchToRegister = document.querySelector("#switchToRegister");
+
+      // Rejestracja
+      registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = registerForm.querySelector("#regEmail").value;
+        const password = registerForm.querySelector("#regPassword").value;
+
+        try {
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          alert("✅ Zarejestrowano: " + userCredential.user.email);
+        } catch (error) {
+          alert("❌ Błąd: " + error.message);
+        }
+      });
+
+      // Logowanie
+      loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = loginForm.querySelector("#logEmail").value;
+        const password = loginForm.querySelector("#logPassword").value;
+
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          alert("🔓 Zalogowano: " + userCredential.user.email);
+        } catch (error) {
+          alert("❌ Błąd logowania: " + error.message);
+        }
+      });
+
+      // Przełączanie między rejestracją i logowaniem
+      switchToLogin.addEventListener("click", () => {
+        document.querySelector("#registerCard").style.display = "none";
+        document.querySelector("#loginCard").style.display = "block";
+      });
+
+      switchToRegister.addEventListener("click", () => {
+        document.querySelector("#loginCard").style.display = "none";
+        document.querySelector("#registerCard").style.display = "block";
+      });
+    });
+  </script>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background: rgba(10, 15, 20, 0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .card {
+      background: rgba(20, 30, 40, 0.85);
+      border: 1px solid #00ffaa88;
+      border-radius: 15px;
+      padding: 40px;
+      width: 320px;
+      box-shadow: 0 0 20px #00ffaa55;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #00ffaa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: #111820;
+      color: #fff;
+      outline: none;
+      font-size: 14px;
+      box-shadow: inset 0 0 5px #00ffaa55;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #00ffaa, #33aaff);
+      color: #000;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      box-shadow: 0 0 15px #00ffaa88;
+      transform: scale(1.05);
+    }
+
+    .link {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .link span {
+      color: #33aaff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <div class="container">
+    <!-- Rejestracja -->
+    <div class="card" id="registerCard">
+      <h2>Rejestracja</h2>
+      <form id="registerForm">
+        <input type="text" placeholder="Nazwa użytkownika" id="regUsername" required>
+        <input type="email" placeholder="Adres e-mail" id="regEmail" required>
+        <input type="password" placeholder="Hasło" id="regPassword" required>
+        <button type="submit">Zarejestruj się</button>
+      </form>
+      <div class="link">
+        Masz już konto? <span id="switchToLogin">Zaloguj się</span>
+      </div>
+    </div>
+
+    <!-- Logowanie -->
+    <div class="card" id="loginCard" style="display:none;">
+      <h2>Logowanie</h2>
+      <form id="loginForm">
+        <input type="email" placeholder="Adres e-mail" id="logEmail" required>
+        <input type="password" placeholder="Hasło" id="logPassword" required>
+        <button type="submit">Zaloguj się</button>
+      </form>
+      <div class="link">
+        Nie masz konta? <span id="switchToRegister">Zarejestruj się</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- particles config -->
+  <script>
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      particles: {
+        number: { value: 120, density: { enable: true, area: 800 } },
+        color: { value: ["#00ffcc", "#00ff88", "#33aaff"] },
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.6,
+          random: true,
+          animation: { enable: true, speed: 0.5, minimumValue: 0.3 }
+        },
+        size: {
+          value: 3,
+          random: true,
+          animation: { enable: true, speed: 2, minimumValue: 1 }
+        },
+        links: {
+          enable: true,
+          distance: 150,
+          color: "#00ffaa",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          outModes: { default: "bounce" },
+          attract: { enable: true, rotateX: 600, rotateY: 1200 }
+        }
+      },
+      interactivity: {
+        detectsOn: "canvas",
+        events: {
+          onHover: { enable: true, mode: "attract" },
+          onClick: { enable: true, mode: "remove" },
+          resize: true
+        },
+        modes: {
+          attract: { distance: 200, duration: 0.3, factor: 3 },
+          remove: { quantity: 5 }
+        }
+      },
+      background: { color: "#0a0f14" },
+      detectRetina: true
+    });
+  </script>
+</body>
+</html>
