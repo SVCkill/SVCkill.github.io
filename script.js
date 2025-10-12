@@ -1,23 +1,20 @@
-// 🌊 Liquid Ether Background
+// LIQUID ETHER
 const canvas = document.getElementById('liquid-ether');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let width = canvas.width;
 let height = canvas.height;
 const blobs = [];
-
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 6; i++) {
   blobs.push({
     x: Math.random() * width,
     y: Math.random() * height,
-    r: Math.random() * 120 + 80,
-    dx: (Math.random() - 0.5) * 1.5,
-    dy: (Math.random() - 0.5) * 1.5
+    r: Math.random() * 150 + 100,
+    dx: (Math.random() - 0.5) * 1.2,
+    dy: (Math.random() - 0.5) * 1.2
   });
 }
-
 function drawBlobs() {
   ctx.clearRect(0, 0, width, height);
   for (const b of blobs) {
@@ -28,7 +25,6 @@ function drawBlobs() {
     ctx.beginPath();
     ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
     ctx.fill();
-
     b.x += b.dx;
     b.y += b.dy;
     if (b.x < -b.r) b.x = width + b.r;
@@ -44,8 +40,8 @@ window.addEventListener('resize', () => {
   height = canvas.height = window.innerHeight;
 });
 
-// ⌨️ Typewriter
-function typeEffect(el, texts, typingSpeed = 100, backSpeed = 60, pause = 1500) {
+// TYPEWRITER
+function typeEffect(el, texts, typingSpeed = 80, backSpeed = 40, pause = 1200) {
   let textIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -77,34 +73,20 @@ function typeEffect(el, texts, typingSpeed = 100, backSpeed = 60, pause = 1500) 
   }
   type();
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   const target = document.getElementById('typing-target');
   if (target) {
     typeEffect(target, [
       'Xeterion Anti Malware',
-      'Cyber Tarcza Przyszłości',
-      'Bezpieczeństwo Level Master',
-      'Hakerzy płaczą — Ty nie'
+      'Real-Time Protection',
+      'System Cleaner',
+      'Zero-Day Shield'
     ]);
   }
 });
 
-// 🧲 Target Cursor
+// TARGET CURSOR
 const cursor = document.getElementById('target-cursor');
 document.addEventListener('mousemove', (e) => {
   cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-});
-
-// 🧭 Menu toggle
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
-menuToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('hidden');
-});
-
-// 💨 Header background change
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('.header');
-  header.classList.toggle('scrolled', window.scrollY > 80);
 });
