@@ -1,103 +1,109 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-&nbsp;&nbsp;<meta charset="UTF-8">
-&nbsp;&nbsp;<meta name="viewport" content="width=device-width, initial-scale=1.0">
-&nbsp;&nbsp;<title>Xeterion - Antywirus</title>
-&nbsp;&nbsp;<script src="https://cdn.tailwindcss.com"></script>
-&nbsp;&nbsp;<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-&nbsp;&nbsp;<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-&nbsp;&nbsp;<style>
-&nbsp;&nbsp;&nbsp;&nbsp;body { background: linear-gradient(135deg, #1e3a8a, #6b21a8); font-family: 'Orbitron', sans-serif; }
-&nbsp;&nbsp;&nbsp;&nbsp;html { scroll-behavior: smooth; }
-&nbsp;&nbsp;&nbsp;&nbsp;.neon-btn { box-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; }
-&nbsp;&nbsp;&nbsp;&nbsp;.neon-btn:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 1), 0 0 50px rgba(59, 130, 246, 0.6); transform: translateY(-3px); }
-&nbsp;&nbsp;&nbsp;&nbsp;.cyber-glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 1.5rem; }
-&nbsp;&nbsp;&nbsp;&nbsp;.nav-menu { transition: all 0.3s ease; }
-&nbsp;&nbsp;&nbsp;&nbsp;.nav-menu.hidden { transform: translateX(100%); }
-&nbsp;&nbsp;&nbsp;&nbsp;.hero-pulse { animation: pulse 2s infinite ease-in-out; }
-&nbsp;&nbsp;&nbsp;&nbsp;@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-&nbsp;&nbsp;&nbsp;&nbsp;@media (max-width: 640px) {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.nav-menu { position: fixed; top: 0; right: 0; height: 100%; width: 80%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); flex-direction: column; padding: 3rem 2rem; }
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.nav-menu a { margin: 1.5rem 0; font-size: 1.5rem; text-transform: uppercase; }
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.nav-menu a::after { content: ''; display: block; width: 0; height: 3px; background: linear-gradient(90deg, #3b82f6, #a855f7); transition: width 0.3s ease; }
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.nav-menu a:hover::after { width: 100%; }
-&nbsp;&nbsp;&nbsp;&nbsp;}
-&nbsp;&nbsp;</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xeterion - Antywirus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(135deg, #1e3a8a, #6b21a8); font-family: 'Orbitron', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .neon-btn { box-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; }
+    .neon-btn:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 1), 0 0 50px rgba(59, 130, 246, 0.6); transform: translateY(-3px); }
+    .cyber-glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 1.5rem; }
+    .nav-menu { transition: all 0.3s ease; }
+    .nav-menu.hidden { transform: translateX(100%); }
+    .hero-pulse { animation: pulse 2s infinite ease-in-out; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+    @media (max-width: 640px) {
+      .nav-menu { position: fixed; top: 0; right: 0; height: 100%; width: 80%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); flex-direction: column; padding: 3rem 2rem; }
+      .nav-menu a { margin: 1.5rem 0; font-size: 1.5rem; text-transform: uppercase; }
+      .nav-menu a::after { content: ''; display: block; width: 0; height: 3px; background: linear-gradient(90deg, #3b82f6, #a855f7); transition: width 0.3s ease; }
+      .nav-menu a:hover::after { width: 100%; }
+    }
+  </style>
 </head>
 <body class="text-white">
-&nbsp;&nbsp;<header class="fixed top-0 left-0 w-full z-50">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="cyber-glass py-4 sm:py-5">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-2xl sm:text-4xl font-bold tracking-wider">Xeterion</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="menu-toggle" class="sm:hidden text-white focus:outline-none">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nav id="nav-menu" class="nav-menu hidden sm:flex sm:space-x-10">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#about" class="text-lg hover:text-blue-400 transition">O nas</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#faq" class="text-lg hover:text-blue-400 transition">FAQ</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#kup" class="text-lg hover:text-blue-400 transition">Kup teraz</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="register.html" class="border border-blue-400 text-blue-400 py-2 px-6 rounded-xl hover:bg-blue-400 hover:text-black transition neon-btn">Zarejestruj się</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</nav>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</header>
-&nbsp;&nbsp;<section class="relative flex items-center justify-center h-screen pt-20 sm:pt-24">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/70"></div>
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="container relative z-10 text-center px-4 sm:px-6 hero-pulse">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-wider animate__animated animate__fadeInDown">Xeterion Anti Malware</h1>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="mt-4 sm:mt-8 text-lg sm:text-2xl md:text-3xl text-gray-300 animate__animated animate__fadeInDown animate__delay-1s max-w-4xl mx-auto">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zabezpiecz swój cyfrowy świat z Xeterion – ochrona przed wirusami, ransomware i innymi zagrożeniami na najwyższym poziomie!
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="kup.html" class="mt-6 sm:mt-10 inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn animate__animated animate__zoomIn animate__delay-2s">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kup teraz (Premium)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<section id="about" class="py-16 sm:py-24 cyber-glass mx-4 sm:mx-6 md:mx-12 lg:mx-20">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="container mx-auto px-4 sm:px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">O nas</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xeterion to nie tylko antywirus – to tarcza przyszłości. Oferujemy ochronę w czasie rzeczywistym, ultraszybkie skanowanie i interfejs, który sprawia, że bezpieczeństwo jest proste. Z nami wirusy, ransomware i spyware nie mają szans.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<section id="faq" class="py-16 sm:py-24">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="container mx-auto px-4 sm:px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">FAQ</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Masz pytania? Sprawdź odpowiedzi na najczęściej zadawane pytania i odkryj, jak Xeterion rewolucjonizuje ochronę Twojego komputera.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<section id="kup" class="py-16 sm:py-24 cyber-glass mx-4 sm:mx-6 md:mx-12 lg:mx-20">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="container mx-auto px-4 sm:px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">Kup Premium</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 animate__animated animate__fadeInUp animate__delay-1s">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subskrypcja Premium odblokowuje pełny download i zaawansowane funkcje. Download dostępny tylko dla zalogowanych użytkowników premium po opłaceniu.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="kup.html" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Przejdź do zakupu
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="mt-4 text-sm sm:text-base text-gray-300">Po zakupie zaloguj się na <a href="/login.html" class="underline hover:text-blue-400">stronie logowania</a> by pobrać.</p>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<footer class="bg-black text-gray-300 py-8 sm:py-10">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="container mx-auto px-4 sm:px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-sm sm:text-lg">© 2025 Xeterion. Wszelkie prawa zastrzeżone.</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="mt-4 space-x-4 sm:space-x-6">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#about" class="text-sm sm:text-lg hover:text-blue-400 transition">O nas</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#faq" class="text-sm sm:text-lg hover:text-blue-400 transition">FAQ</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#kup" class="text-sm sm:text-lg hover:text-blue-400 transition">Kup teraz</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</footer>
-&nbsp;&nbsp;<script>
-&nbsp;&nbsp;&nbsp;&nbsp;const menuToggle = document.getElementById('menu-toggle');
-&nbsp;&nbsp;&nbsp;&nbsp;const navMenu = document.getElementById('nav-menu');
-&nbsp;&nbsp;&nbsp;&nbsp;menuToggle.addEventListener('click', () => {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navMenu.classList.toggle('hidden');
-&nbsp;&nbsp;&nbsp;&nbsp;});
-&nbsp;&nbsp;</script>
+  <header class="fixed top-0 left-0 w-full z-50">
+    <div class="cyber-glass py-4 sm:py-5">
+      <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        <div class="text-2xl sm:text-4xl font-bold tracking-wider">Xeterion</div>
+        <button id="menu-toggle" class="sm:hidden text-white focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+        <nav id="nav-menu" class="nav-menu hidden sm:flex sm:space-x-10">
+          <a href="#about" class="text-lg hover:text-blue-400 transition">O nas</a>
+          <a href="#faq" class="text-lg hover:text-blue-400 transition">FAQ</a>
+          <a href="#kup" class="text-lg hover:text-blue-400 transition">Kup teraz</a>
+          <a href="register.html" class="border border-blue-400 text-blue-400 py-2 px-6 rounded-xl hover:bg-blue-400 hover:text-black transition neon-btn">Zarejestruj się</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative flex items-center justify-center h-screen pt-20 sm:pt-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/70"></div>
+    <div class="container relative z-10 text-center px-4 sm:px-6 hero-pulse">
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-wider animate__animated animate__fadeInDown">Xeterion Anti Malware</h1>
+      <p class="mt-4 sm:mt-8 text-lg sm:text-2xl md:text-3xl text-gray-300 animate__animated animate__fadeInDown animate__delay-1s max-w-4xl mx-auto">
+        Zabezpiecz swój cyfrowy świat z Xeterion – ochrona przed wirusami, ransomware i innymi zagrożeniami na najwyższym poziomie!
+      </p>
+      <a href="kup.html" class="mt-6 sm:mt-10 inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn animate__animated animate__zoomIn animate__delay-2s">
+        Kup teraz (Premium)
+      </a>
+    </div>
+  </section>
+
+  <section id="about" class="py-16 sm:py-24 cyber-glass mx-4 sm:mx-6 md:mx-12 lg:mx-20">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">O nas</h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        Xeterion to nie tylko antywirus – to tarcza przyszłości. Oferujemy ochronę w czasie rzeczywistym, ultraszybkie skanowanie i interfejs, który sprawia, że bezpieczeństwo jest proste. Z nami wirusy, ransomware i spyware nie mają szans.
+      </p>
+    </div>
+  </section>
+
+  <section id="faq" class="py-16 sm:py-24">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">FAQ</h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        Masz pytania? Sprawdź odpowiedzi na najczęściej zadawane pytania i odkryj, jak Xeterion rewolucjonizuje ochronę Twojego komputera.
+      </p>
+    </div>
+  </section>
+
+  <section id="kup" class="py-16 sm:py-24 cyber-glass mx-4 sm:mx-6 md:mx-12 lg:mx-20">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-5xl font-bold text-blue-400 mb-4 sm:mb-8 animate__animated animate__fadeInUp">Kup Premium</h2>
+      <p class="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+        Subskrypcja Premium odblokowuje pełny download i zaawansowane funkcje. Download dostępny tylko dla zalogowanych użytkowników premium po opłaceniu.
+      </p>
+      <a href="kup.html" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-10 rounded-full transition neon-btn">
+        Przejdź do zakupu
+      </a>
+      <p class="mt-4 text-sm sm:text-base text-gray-300">Po zakupie zaloguj się na <a href="/login.html" class="underline hover:text-blue-400">stronie logowania</a> by pobrać.</p>
+    </div>
+  </section>
+
+  <footer class="bg-black text-gray-300 py-8 sm:py-10">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm sm:text-lg">© 2025 Xeterion. Wszelkie prawa zastrzeżone.</p>
+      <div class="mt-4 space-x-4 sm:space-x-6">
+        <a href="#about" class="text-sm sm:text-lg hover:text-blue-400 transition">O nas</a>
+        <a href="#faq" class="text-sm sm:text-lg hover:text-blue-400 transition">FAQ</a>
+        <a href="#kup" class="text-sm sm:text-lg hover:text-blue-400 transition">Kup teraz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
