@@ -1,123 +1,111 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Xeterion — Cyber Tarcza</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    
-    <canvas id="liquid-ether" class="background"></canvas>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xeterion Anti Malware</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <canvas id="liquid-ether" class="background"></canvas>
+  <div id="target-cursor"></div>
 
-    
-    <div id="target-cursor"></div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">XETERION</div>
+      <nav id="nav-menu" class="nav-menu">
+        <a href="#about" class="nav-link">Oprogramowanie</a>
+        <a href="#features" class="nav-link">Funkcje</a>
+        <a href="#download" class="nav-link">Pobierz</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+    </div>
+  </header>
 
-    
-    <header class="header">
-      <div class="container header-inner">
-        <div class="logo">Xeterion</div>
-        <button id="menu-toggle" class="menu-toggle">☰</button>
-        <nav id="nav-menu" class="nav-menu hidden">
-          <a href="#about" class="nav-link">O nas</a>
-          <a href="#features" class="nav-link">Funkcje</a>
-          <a href="#faq" class="nav-link">FAQ</a>
-          <a href="#buy" class="nav-link neon-btn">Kup teraz</a>
-        </nav>
-      </div>
-    </header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 id="typing-target" class="hero-title typewriter"><span class="typed-text"></span></h1>
+      <p class="hero-subtitle">Zaawansowana ochrona systemu. Natychmiastowe wykrywanie i neutralizacja zagrożeń.</p>
+      <a href="#download" class="cta-btn">Pobierz Teraz</a>
+    </div>
+  </section>
 
-   
-    <section class="hero">
-      <div class="hero-inner">
-        <h1 class="hero-title">
-          <span id="typing-target" class="typewriter">
-            <span class="typed-text"></span>
-          </span>
-        </h1>
-        <p class="hero-subtitle">
-          Cyber tarcza przyszłości. Zabezpiecz swój świat, zanim ktoś go spierdoli.
-        </p>
-        <a href="#buy" class="cta-btn neon-btn">Aktywuj Premium</a>
-      </div>
-    </section>
+  <!-- ABOUT -->
+  <section id="about" class="section glass">
+    <div class="container">
+      <h2 class="section-title">Oprogramowanie</h2>
+      <p class="section-text">
+        Xeterion Anti Malware to zaawansowane narzędzie stworzone do natychmiastowego wykrywania i eliminowania zagrożeń takich jak wirusy, malware, trojany, adware i ransomware.
+        Program został zaprojektowany z myślą o maksymalnej skuteczności i prostocie obsługi.
+      </p>
+    </div>
+  </section>
 
-  
-    <section id="about" class="section glass">
-      <div class="container">
-        <h2 class="section-title">O nas</h2>
-        <p class="section-text">
-          Xeterion to nie jest jakiś tam gówniany antywirus. To cyber-tarcza stworzona, żeby zniszczyć ransomware, spyware i inne pierdolniki szybciej niż zdążą powiedzieć "atak". 
-        </p>
-      </div>
-    </section>
-
-   
-    <section id="features" class="section">
-      <div class="container">
-        <h2 class="section-title">Funkcje Premium</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="icon">🧠</div>
-            <h3>AI Shield</h3>
-            <p>Uczenie maszynowe, które wyprzedza hakerów o kilka ruchów.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon">🛡️</div>
-            <h3>Zero-Day Protection</h3>
-            <p>Wykrywanie i blokada zagrożeń, których jeszcze nie znają inni.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon">⚡</div>
-            <h3>Natychmiastowa reakcja</h3>
-            <p>Nie ma czekania. Zagrożenie ginie w sekundę.</p>
-          </div>
+  <!-- FEATURES -->
+  <section id="features" class="section">
+    <div class="container">
+      <h2 class="section-title">Najważniejsze Funkcje</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Wykrywanie zagrożeń</h3>
+          <p>Silnik w czasie rzeczywistym usuwa aktywne procesy malware w kilka sekund.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Zero-Day Protection</h3>
+          <p>Natychmiastowe blokowanie zagrożeń zanim zostaną rozpoznane przez bazy sygnatur.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Bez zbędnego gówna</h3>
+          <p>Żadnych zbędnych reklam ani śmieciowych procesów — tylko czyste działanie.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Tryb natychmiastowy</h3>
+          <p>Automatyczne działanie bez instalacji i konfiguracji.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-   
-    <section id="faq" class="section glass">
-      <div class="container">
-        <h2 class="section-title">FAQ</h2>
-        <div class="faq-item">
-          <h3>Jak to zainstalować?</h3>
-          <p>Po zakupie dostajesz klucz, instalator i jazda.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Na czym działa?</h3>
-          <p>Windows, Mac, Linux, a nawet lodówki z Wi-Fi. Serio.</p>
-        </div>
+  <!-- DOWNLOAD -->
+  <section id="download" class="section glass">
+    <div class="container">
+      <h2 class="section-title">Pobierz</h2>
+      <p class="section-text">
+        Pobierz wersję Xeterion Anti Malware i wyczyść swój system jednym kliknięciem.
+      </p>
+      <a href="Xeterion-Setup.exe" class="cta-btn download-btn">Pobierz Instalator</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-item">
+        <h3>Czy wymaga instalacji?</h3>
+        <p>Nie. Program działa natychmiast po uruchomieniu — jak :contentReference[oaicite:2]{index=2}.</p>
       </div>
-    </section>
-
-    
-    <section id="buy" class="section">
-      <div class="container glass">
-        <h2 class="section-title">Kup Premium</h2>
-        <p class="section-text">
-          Odblokuj pełną moc Xeterion. AI Shield, Zero-Day Protection i bezpieczeństwo level „untouchable”.
-        </p>
-        <a href="register.html" class="cta-btn neon-btn">Kup teraz za 99 zł/miesiąc</a>
+      <div class="faq-item">
+        <h3>Na jakich systemach działa?</h3>
+        <p>Obsługiwane: Windows 7, 8, 10, 11 (x64).</p>
       </div>
-    </section>
-
-    
-    <footer class="footer">
-      <div class="container">
-        <p class="footer-text">© 2025 Xeterion. Wszystkie prawa zastrzeżone.</p>
-        <div class="footer-links">
-          <a href="#about" class="footer-link">O nas</a>
-          <a href="#features" class="footer-link">Funkcje</a>
-          <a href="#faq" class="footer-link">FAQ</a>
-        </div>
+      <div class="faq-item">
+        <h3>Czy jest darmowy?</h3>
+        <p>Tak — wersja podstawowa jest całkowicie darmowa. Wersja Pro ma dodatkowe funkcje analityczne.</p>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">© 2025 Xeterion. Narzędzie bezpieczeństwa bez pierdolenia.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
