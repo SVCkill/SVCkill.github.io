@@ -1,26 +1,20 @@
-/* ===================== */
-/* FONTY & RESET          */
-/* ===================== */
+/* ---------- RESET & PODSTAWY ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(135deg, #04000f 0%, #0d0226 100%);
-  color: #fff;
   overflow-x: hidden;
+  color: #e6e6e6;
+  background: #0a0014;
 }
 
-/* ===================== */
-/* TŁO - CANVAS LIQUID    */
-/* ===================== */
+/* ---------- TŁO KANWAŚ & EFEKT ---------- */
 .background-canvas {
   position: fixed;
   top: 0;
@@ -30,200 +24,210 @@ body {
   z-index: -1;
 }
 
-/* ===================== */
-/* HEADER                */
-/* ===================== */
+/* ---------- NAGŁÓWEK ---------- */
 .header {
-  width: 100%;
-  padding: 1rem 2rem;
   position: fixed;
   top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
   backdrop-filter: blur(12px);
-  background: rgba(20, 20, 40, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 999;
+  background: rgba(10, 0, 20, 0.4);
+  z-index: 1000;
   transition: background 0.3s ease;
 }
-
 .header.scrolled {
-  background: rgba(20, 20, 40, 0.7);
+  background: rgba(10, 0, 20, 0.8);
 }
-
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .logo {
-  font-size: 1.8rem;
-  font-weight: 900;
+  font-size: 2rem;
   color: #00f0ff;
   text-shadow: 0 0 15px #00f0ff;
 }
-
 .menu-toggle {
   display: none;
+  font-size: 1.5rem;
+  color: #fff;
   background: none;
   border: none;
-  color: white;
   cursor: pointer;
 }
-
 .nav-menu {
   display: flex;
   gap: 2rem;
 }
-
 .nav-menu.hidden {
   display: none;
 }
-
 .nav-link {
-  color: white;
   text-decoration: none;
+  color: #e6e6e6;
   font-weight: 600;
   transition: color 0.3s ease;
 }
-
 .nav-link:hover {
   color: #00f0ff;
-  text-shadow: 0 0 10px #00f0ff;
+  text-shadow: 0 0 8px #00f0ff;
 }
 
-.neon-btn {
-  background: #00f0ff;
-  color: #000;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 800;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px #00f0ff;
+/* ---------- TEKST PISANY (TYPEWRITER) ---------- */
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00f0ff;
+  white-space: nowrap;
+}
+.typed-text {
+  display: inline-block;
 }
 
-.neon-btn:hover {
-  background: #00bcd4;
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 25px #00f0ff;
-}
-
-/* ===================== */
-/* HERO SECTION          */
-/* ===================== */
+/* ---------- HERO ---------- */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(160deg, rgba(0,0,0,0.3), rgba(10,10,50,0.7));
   padding: 0 1rem;
 }
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
 .hero-content {
-  position: relative;
-  z-index: 2;
+  z-index: 1;
   max-width: 800px;
 }
-
 .hero-title {
   font-size: 3.5rem;
   color: #00f0ff;
   text-shadow: 0 0 20px #00f0ff;
   margin-bottom: 1rem;
 }
-
-.hero-text {
+.hero-subtitle {
   font-size: 1.2rem;
-  color: #eee;
+  color: #ccc;
   margin-bottom: 2rem;
-  line-height: 1.6;
+}
+.cta-btn {
+  display: inline-block;
+  background: #00f0ff;
+  color: #000;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 0 20px #00f0ff;
+  transition: all 0.3s ease;
+}
+.cta-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: #00d8f0;
 }
 
-/* ===================== */
-/* SEKCJE                */
-/* ===================== */
+/* ---------- SEKTIONY ---------- */
 .section {
   padding: 6rem 2rem;
-  position: relative;
-  max-width: 1100px;
-  margin: auto;
 }
-
-.cyber-glass {
+.section-glass {
+  background: rgba(15, 5, 30, 0.4);
   backdrop-filter: blur(15px);
-  background: rgba(20, 20, 40, 0.4);
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  border-radius: 16px;
+  margin: 2rem 0;
 }
-
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 .section-title {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.4rem;
   color: #00f0ff;
   text-shadow: 0 0 15px #00f0ff;
+  margin-bottom: 1.5rem;
 }
-
 .section-text {
-  color: #ddd;
   font-size: 1.1rem;
-  line-height: 1.7;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
-/* ===================== */
-/* STOPKA                */
-/* ===================== */
-.footer {
+/* ---------- GRID FUNKCJI ---------- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.feature-card {
+  background: rgba(20, 10, 40, 0.5);
   padding: 2rem;
+  border-radius: 12px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  background: rgba(20, 10, 40, 0.8);
+}
+.feature-card .icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #00f0ff;
+}
+
+/* ---------- FAQ ---------- */
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+.faq-item h3 {
+  font-size: 1.4rem;
+  color: #00f0ff;
+  cursor: pointer;
+}
+.faq-item p {
+  padding-left: 1rem;
+  color: #ccc;
+  margin-top: 0.5rem;
+}
+
+/* ---------- STOPKA ---------- */
+.footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: rgba(10, 0, 20, 0.6);
   backdrop-filter: blur(10px);
 }
-
 .footer-text {
   color: #aaa;
   margin-bottom: 1rem;
 }
-
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
-
 .footer-link {
   color: #00f0ff;
   text-decoration: none;
   font-weight: 600;
 }
-
 .footer-link:hover {
-  text-shadow: 0 0 15px #00f0ff;
+  text-shadow: 0 0 12px #00f0ff;
 }
 
-/* ===================== */
-/* MEDIA QUERY           */
-/* ===================== */
+/* ---------- RESPONSYWNOŚĆ ---------- */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
-
   .nav-menu {
     flex-direction: column;
-    background: rgba(20, 20, 40, 0.8);
     position: absolute;
     top: 100%;
     right: 0;
+    background: rgba(15, 5, 30, 0.9);
     width: 200px;
     padding: 1rem;
     border-radius: 8px;
-  }
-
-  .nav-menu.hidden {
-    display: none;
   }
 }
