@@ -9,71 +9,67 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="liquid-ether-canvas" class="background-canvas"></canvas>
-  
+  <canvas id="liquid-ether" class="background-canvas"></canvas>
   <header class="header cyber-glass">
-    <div class="header-container">
+    <div class="container">
       <div class="logo neon-glow">Xeterion</div>
       <button id="menu-toggle" class="menu-toggle">
-        <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M-7 6h7"></path>
+        <svg class="hamburger" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
-      <nav id="nav-menu" class="nav-menu">
+      <nav id="nav-menu" class="nav-menu hidden">
         <a href="#about" class="nav-link">O nas</a>
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="#kup" class="nav-link">Kup teraz</a>
-        <a href="register.html" class="register-btn neon-btn">Zarejestruj się</a>
+        <a href="register.html" class="nav-btn neon-btn">Zarejestruj się</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero-section">
+  <section class="hero">
     <div class="hero-overlay"></div>
-    <div class="hero-content hero-pulse">
+    <div class="container hero-content pulse">
       <h1 class="hero-title animate__animated animate__fadeInDownBig">Xeterion Anti Malware</h1>
-      <p class="hero-desc animate__animated animate__fadeInUpBig animate__delay-1s">
-        Zabezpiecz swój cyfrowy świat z Xeterion – ochrona przed wirusami, ransomware i innymi zagrożeniami na najwyższym poziomie! Cyber-tarcza, która ewoluuje z każdym zagrożeniem.
+      <p class="hero-text animate__animated animate__fadeInUpBig animate__delay-1s">
+        Zabezpiecz swój cyfrowy świat z Xeterion – ochrona przed wirusami, ransomware i innymi zagrożeniami na najwyższym poziomie! Cyber-tarcza, która wyprzedza hakerów.
       </p>
-      <a href="kup.html" class="hero-cta neon-btn animate__animated animate__zoomIn animate__delay-2s">
-        Kup teraz (Premium) – Tylko 99zł/mies!
-      </a>
+      <a href="kup.html" class="cta-btn neon-btn animate__animated animate__zoomIn animate__delay-2s">Kup teraz (Premium) – 99 zł/mies!</a>
     </div>
   </section>
 
-  <section id="about" class="section cyber-glass about-section">
+  <section id="about" class="section cyber-glass">
     <div class="container">
       <h2 class="section-title neon-glow animate__animated animate__bounceInLeft">O nas</h2>
       <p class="section-text animate__animated animate__fadeInRight animate__delay-1s">
-        Xeterion to nie tylko antywirus – to tarcza przyszłości. Oferujemy ochronę w czasie rzeczywistym, ultraszybkie skanowanie i interfejs, który sprawia, że bezpieczeństwo jest proste. Z nami wirusy, ransomware i spyware nie mają szans. Nasza AI uczy się twoich nawyków, by blokować zagrożenia zanim uderzą.
+        Xeterion to nie żaden tam zwykły antywirus – to pieprzona tarcza przyszłości! Ochrona w czasie rzeczywistym, skanowanie szybsze niż błyskawica i UI, które sprawia, że bezpieczeństwo to pestka. Wirusy, ransomware, spyware? Z nami to przeszłość.
       </p>
     </div>
   </section>
 
-  <section id="faq" class="section faq-section">
+  <section id="faq" class="section">
     <div class="container">
       <h2 class="section-title neon-glow animate__animated animate__bounceInRight">FAQ</h2>
       <p class="section-text animate__animated animate__fadeInLeft animate__delay-1s">
-        Masz pytania? Sprawdź odpowiedzi na najczęściej zadawane pytania i odkryj, jak Xeterion rewolucjonizuje ochronę Twojego komputera. Od instalacji po zaawansowane funkcje – wszystko wyjaśnione!
+        Masz pytania? Sprawdź nasze odpowiedzi i zobacz, jak Xeterion rozwala każdy problem z bezpieczeństwem. Od instalacji po zaawansowane funkcje – mamy to ogarnięte.
       </p>
-      <!-- Tutaj możesz dodać accordion z FAQ, ale na razie proste -->
     </div>
   </section>
 
-  <section id="kup" class="section cyber-glass kup-section">
+  <section id="kup" class="section cyber-glass">
     <div class="container">
       <h2 class="section-title neon-glow animate__animated animate__bounceInUp">Kup Premium</h2>
-      <p class="section-text mb-xl animate__animated animate__fadeInDown animate__delay-1s">
-        Subskrypcja Premium odblokowuje pełny download i zaawansowane funkcje jak AI Shield i Zero-Day Protection. Download dostępny tylko dla zalogowanych użytkowników premium po opłaceniu. Bezpieczeństwo na lata!
+      <p class="section-text animate__animated animate__fadeInDown animate__delay-1s">
+        Subskrypcja Premium odblokowuje pełny download, AI Shield i Zero-Day Protection. Download tylko dla zalogowanych premium po opłaceniu. Bezpieczeństwo level master!
       </p>
-      <a href="kup.html" class="cta-btn neon-btn">Przejdź do zakupu – Natychmiastowa aktywacja!</a>
-      <p class="download-note mt-md">Po zakupie zaloguj się na <a href="/login.html" class="link neon-link">stronie logowania</a> by pobrać i aktywować.</p>
+      <a href="kup.html" class="cta-btn neon-btn">Przejdź do zakupu – Aktywacja w sekundę!</a>
+      <p class="download-note">Po zakupie zaloguj się na <a href="/login.html" class="link neon-link">stronie logowania</a> by pobrać.</p>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p class="footer-text">© 2025 Xeterion. Wszelkie prawa zastrzeżone. Zbudowane z pasji do cyberbezpieczeństwa.</p>
+      <p class="footer-text">© 2025 Xeterion. Wszelkie prawa zastrzeżone. Tworzymy przyszłość bezpieczeństwa.</p>
       <div class="footer-links">
         <a href="#about" class="footer-link neon-link">O nas</a>
         <a href="#faq" class="footer-link neon-link">FAQ</a>
