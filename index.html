@@ -1,108 +1,123 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xeterion – Cyber Ochrona</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
-    rel="stylesheet"
-  />
-</head>
-<body>
-  <canvas id="background-canvas" class="background-canvas"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xeterion — Cyber Tarcza</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    
+    <canvas id="liquid-ether" class="background"></canvas>
 
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo">Xeterion</div>
-      <button id="menu-toggle" class="menu-toggle">☰</button>
-      <nav id="nav-menu" class="nav-menu hidden">
-        <a href="#about" class="nav-link">O nas</a>
-        <a href="#features" class="nav-link">Funkcje</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <a href="#buy" class="nav-link neon-btn">Kup teraz</a>
-      </nav>
-    </div>
-  </header>
+    
+    <div id="target-cursor"></div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span id="typing-target" class="typewriter">
-          <span class="typed-text"></span>
-        </span>
-      </h1>
-      <p class="hero-subtitle">Ochrona jakiej świat jeszcze nie widział</p>
-      <a href="#buy" class="cta-btn neon-btn">Aktywuj Premium</a>
-    </div>
-  </section>
+    
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">Xeterion</div>
+        <button id="menu-toggle" class="menu-toggle">☰</button>
+        <nav id="nav-menu" class="nav-menu hidden">
+          <a href="#about" class="nav-link">O nas</a>
+          <a href="#features" class="nav-link">Funkcje</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#buy" class="nav-link neon-btn">Kup teraz</a>
+        </nav>
+      </div>
+    </header>
 
-  <section id="about" class="section section-glass">
-    <div class="container">
-      <h2 class="section-title">O nas</h2>
-      <p class="section-text">
-        Jesteśmy twórcami najlepszej cyber-tarczy. Nie pierdolimy się w półśrodkach — oferujemy rzeczywistą ochronę przed ransomware, spyware i innymi syfami w sieci.
-      </p>
-    </div>
-  </section>
+   
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">
+          <span id="typing-target" class="typewriter">
+            <span class="typed-text"></span>
+          </span>
+        </h1>
+        <p class="hero-subtitle">
+          Cyber tarcza przyszłości. Zabezpiecz swój świat, zanim ktoś go spierdoli.
+        </p>
+        <a href="#buy" class="cta-btn neon-btn">Aktywuj Premium</a>
+      </div>
+    </section>
 
-  <section id="features" class="section">
-    <div class="container">
-      <h2 class="section-title">Funkcje</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="icon">🔒</div>
-          <h3>Real-Time Shield</h3>
-          <p>Skany w locie, blokada ataków na żywo.</p>
+  
+    <section id="about" class="section glass">
+      <div class="container">
+        <h2 class="section-title">O nas</h2>
+        <p class="section-text">
+          Xeterion to nie jest jakiś tam gówniany antywirus. To cyber-tarcza stworzona, żeby zniszczyć ransomware, spyware i inne pierdolniki szybciej niż zdążą powiedzieć "atak". 
+        </p>
+      </div>
+    </section>
+
+   
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section-title">Funkcje Premium</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="icon">🧠</div>
+            <h3>AI Shield</h3>
+            <p>Uczenie maszynowe, które wyprzedza hakerów o kilka ruchów.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🛡️</div>
+            <h3>Zero-Day Protection</h3>
+            <p>Wykrywanie i blokada zagrożeń, których jeszcze nie znają inni.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>Natychmiastowa reakcja</h3>
+            <p>Nie ma czekania. Zagrożenie ginie w sekundę.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="icon">⚡</div>
-          <h3>AI Booster</h3>
-          <p>Sztuczna inteligencja wykrywa nowe zagrożenia.</p>
+      </div>
+    </section>
+
+   
+    <section id="faq" class="section glass">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+          <h3>Jak to zainstalować?</h3>
+          <p>Po zakupie dostajesz klucz, instalator i jazda.</p>
         </div>
-        <div class="feature-card">
-          <div class="icon">🛡️</div>
-          <h3>Zero-Day Defense</h3>
-          <p>Ochrona nawet przed nieznanymi zagrożeniami.</p>
+        <div class="faq-item">
+          <h3>Na czym działa?</h3>
+          <p>Windows, Mac, Linux, a nawet lodówki z Wi-Fi. Serio.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="faq" class="section section-glass">
-    <div class="container">
-      <h2 class="section-title">FAQ</h2>
-      <div class="faq-item">
-        <h3>Jak zainstalować?</h3>
-        <p>Po zakupie dostaniesz link + kod. Wklejasz, instalujesz, uruchamiasz.</p>
+    
+    <section id="buy" class="section">
+      <div class="container glass">
+        <h2 class="section-title">Kup Premium</h2>
+        <p class="section-text">
+          Odblokuj pełną moc Xeterion. AI Shield, Zero-Day Protection i bezpieczeństwo level „untouchable”.
+        </p>
+        <a href="register.html" class="cta-btn neon-btn">Kup teraz za 99 zł/miesiąc</a>
       </div>
-      <div class="faq-item">
-        <h3>Czy działa na Mac/Windows?</h3>
-        <p>Tak — pełna kompatybilność z systemami Windows, Mac i Linux.</p>
+    </section>
+
+    
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">© 2025 Xeterion. Wszystkie prawa zastrzeżone.</p>
+        <div class="footer-links">
+          <a href="#about" class="footer-link">O nas</a>
+          <a href="#features" class="footer-link">Funkcje</a>
+          <a href="#faq" class="footer-link">FAQ</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <section id="buy" class="section">
-    <div class="container section-glass">
-      <h2 class="section-title">Kup Premium</h2>
-      <p class="section-text">Pełny dostęp, AI Shield, automatyczne aktualizacje.</p>
-      <a href="register.html" class="cta-btn neon-btn">Kup teraz za 99 zł / mies.</a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <p class="footer-text">© 2025 Xeterion. Wszystkie prawa zastrzeżone.</p>
-      <div class="footer-links">
-        <a href="#about" class="footer-link">O nas</a>
-        <a href="#features" class="footer-link">Funkcje</a>
-        <a href="#faq" class="footer-link">FAQ</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
